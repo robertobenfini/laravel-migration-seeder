@@ -16,8 +16,51 @@
 </head>
 
 <body>
-
-        
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Azienda</th>
+                            <th scope="col">Stazione di partenza</th>
+                            <th scope="col">Stazione di arrivo</th>
+                            <th scope="col">Orario di partenza</th>
+                            <th scope="col">Orario di arrivo</th>
+                            <th scope="col">Codice treno</th>
+                            <th scope="col">Numero carrozze</th>
+                            <th scope="col">In orario</th>
+                            <th scope="col">Cancellato</th>
+                            <th scope="col">Data di partenza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($trains as $train)
+                            @if($train->data_partenza == '2023-07-26' && $train->cancellato == 0)   
+                                <tr>
+                                    <td>{{ $train->azienda }}</td>
+                                    <td>{{ $train->stazione_di_partenza }}</td>
+                                    <td>{{ $train->stazione_di_arrivo }}</td>
+                                    <td>{{ $train->orario_di_partenza }}</td>
+                                    <td>{{ $train->orario_di_arrivo }}</td>
+                                    <td>{{ $train->codice_treno }}</td>
+                                    <td>{{ $train->numero_carrozze }}</td>
+                                    <td>@if($train->in_orario == 1) in orario
+                                        @else <strong>in ritardo</strong>
+                                        @endif
+                                    </td>
+                                    <td>@if($train->cancellato == 1) <strong>treno cancellato</strong>
+                                        @else treno non cancellato
+                                        @endif</td>
+                                    <td>{{ $train->data_partenza }}</td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </body>
 
