@@ -35,26 +35,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($trains as $train)
-                            @if($train->data_partenza == '2023-07-26' && $train->cancellato == 0)   
-                                <tr>
-                                    <td>{{ $train->azienda }}</td>
-                                    <td>{{ $train->stazione_di_partenza }}</td>
-                                    <td>{{ $train->stazione_di_arrivo }}</td>
-                                    <td>{{ $train->orario_di_partenza }}</td>
-                                    <td>{{ $train->orario_di_arrivo }}</td>
-                                    <td>{{ $train->codice_treno }}</td>
-                                    <td>{{ $train->numero_carrozze }}</td>
-                                    <td>@if($train->in_orario == 1) in orario
-                                        @else <strong>in ritardo</strong>
-                                        @endif
-                                    </td>
-                                    <td>@if($train->cancellato == 1) <strong>treno cancellato</strong>
-                                        @else treno non cancellato
-                                        @endif</td>
-                                    <td>{{ $train->data_partenza }}</td>
-                                </tr>
-                            @endif
+                        @foreach($trains as $train) 
+                            <tr>
+                                <td>{{ $train->azienda }}</td>
+                                <td>{{ $train->stazione_di_partenza }}</td>
+                                <td>{{ $train->stazione_di_arrivo }}</td>
+                                <td>{{ $train->orario_di_partenza }}</td>
+                                <td>{{ $train->orario_di_arrivo }}</td>
+                                <td>{{ $train->codice_treno }}</td>
+                                <td>{{ $train->numero_carrozze }}</td>
+                                <td>@if($train->in_orario == 1) in orario
+                                    @else <strong>in ritardo</strong>
+                                    @endif
+                                </td>
+                                <td>@if($train->cancellato == 1) <strong>treno cancellato</strong>
+                                    @else treno non cancellato
+                                    @endif</td>
+                                <td>{{ $train->data_partenza }}</td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
